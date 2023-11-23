@@ -70,7 +70,7 @@ function LoginForm() {
                         className="bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition"
                         type="submit"
                     >Criar</button>
-                    <a className="text-blue-600 text-center font-bold mt-2" href="/">Cancelar</a>
+                    <a className="text-blue-600 text-center font-bold mt-2" href="/">Voltar</a>
                 </div>
             </form>
         </div>

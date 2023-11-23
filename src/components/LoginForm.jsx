@@ -19,6 +19,7 @@ function LoginForm() {
                 withCredentials: true,
             });
             localStorage.setItem('accessToken', response.data.access_token);
+
         } catch (error) {
             console.error('Erro:', error.message);
         }
@@ -48,7 +49,10 @@ function LoginForm() {
                     className="bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition"
                     type="submit"
                 >Entrar</button>
-                <a className="text-blue-600 text-center font-bold mt-2" href="/user">Criar conta</a>
+                <div className='flex justify-between'>
+                    <a className="text-blue-600 text-center font-bold mt-2" href="/user">Criar conta</a>
+                    <a className="text-blue-600 text-center font-bold mt-2" href="/check">Ir para checks</a>
+                </div>
             </div>
         </form>
     );

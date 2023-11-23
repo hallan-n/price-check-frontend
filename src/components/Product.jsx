@@ -1,10 +1,32 @@
-function Product({product_name, price, average_rating, image_url, store_id}) {
-    let text;
-    if (store_id === 1){
-        text = 'Magazine'
-    }else if(store_id == 2){
-        text = 'Havan'
+import axios from 'axios';
+
+function Product({ product_id, product_name, description, category, brand, model, price, product_url, average_rating, availability, image_url, store_id }) {
+    let product = {
+        product_id: product_id,
+        product_name: product_name,
+        description: description,
+        category: category,
+        brand: brand,
+        model: model,
+        price: price,
+        product_url: product_url,
+        average_rating: average_rating,
+        availability: availability,
+        image_url: image_url,
+        store_id: store_id,
     }
+
+    let text;
+    if (store_id == 1) {
+        text = "Magazine"
+    } else if (store_id == 2) {
+        text = "Havan"
+    }
+    const handlePostProduct = async (event) => {
+        const response = await axios.post('http://127.0.0.1:8000/rpa', product, {headers: {'token': localStorage.getItem('accessToken')}});
+
+    };
+
     return (
         <div className="bg-slate-600 text-white p-4 rounded flex flex-col justify-between">
             <img src={image_url} alt="" />
@@ -18,7 +40,8 @@ function Product({product_name, price, average_rating, image_url, store_id}) {
             </div>
             <button
                 className="mt-4 bg-slate-800 rounded-md p-4 w-full text-white hover:bg-slate-700 transition"
-                type="submit"
+                type="button"
+                onClick={handlePostProduct}
             >Adicionar ao carrinho</button>
         </div>
     )
