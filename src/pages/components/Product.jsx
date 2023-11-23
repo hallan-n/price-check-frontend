@@ -16,7 +16,7 @@ function Product({product_name, price, average_rating}) {
     // store_id: int = None 
 
     return (
-        <div className="bg-slate-600 text-white p-4 rounded">
+        <div className="bg-slate-600 text-white p-4 rounded flex flex-col justify-between">
             <img src="https://a-static.mlcdn.com.br/800x560/massageador-eletrico-profissional-muscular-pistola-original-massageador-muscular-eletrico/lojanaweb/0cb40156e27b11ecbc864201ac185078/e35b9c6bcb2c2619bf78cf8f3da62f73.jpeg" alt="" />
             <div className="flex items-center pt-3">
                 <div className="p-3 break-words overflow-hidden">{product_name}</div>
