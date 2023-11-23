@@ -1,4 +1,4 @@
-import AcountForm from '../components/AcountForm'
+import AcountForm from '../../components/AcountForm'
 
 function Home() {
     return (
