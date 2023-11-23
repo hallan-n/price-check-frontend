@@ -27,18 +27,20 @@ function LoginForm() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="flex flex-col w-96 gap-2">
-                <h1 className="text-white text-2xl mb-2 text-center font-bold">Login</h1>
+                <h1 className="text-white text-2xl mb-2 text-center font-bold">Logar</h1>
                 <input
                     className="bg-slate-600 rounded-md p-4 text-white"
                     type="text"
                     name="email"
+                    placeholder="Email"
                     value={dadosLogin.email}
                     onChange={handleChange}
-                />
+                    />
                 <input
                     className="bg-slate-600 rounded-md p-4 text-white"
                     type="password"
-                    name="password" // Alteração do nome do campo para "password"
+                    name="password"
+                    placeholder="Senha"
                     value={dadosLogin.password}
                     onChange={handleChange}
                 />
@@ -46,7 +48,7 @@ function LoginForm() {
                     className="bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition"
                     type="submit"
                 >Entrar</button>
-                <a className="text-blue-600 text-center font-bold mt-2" href="#">Criar conta</a>
+                <a className="text-blue-600 text-center font-bold mt-2" href="/user">Criar conta</a>
             </div>
         </form>
     );
