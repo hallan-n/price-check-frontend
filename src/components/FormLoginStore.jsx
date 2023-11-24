@@ -78,6 +78,7 @@ function FormLoginStore() {
                         {store ? store.map((str, index) => (<option key={index} value={str.store_id}>{str.store_name}</option>)) : null}
                     </select>
                 </div>
+                <a className="text-blue-600 text-center font-bold mt-2" href="/check">Voltar</a>
             </div>
         </form>
     );

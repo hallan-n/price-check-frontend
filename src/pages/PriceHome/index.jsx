@@ -38,7 +38,9 @@ function PriceHome() {
         <div className='bg-slate-900 h-full'>
 
             <div className="flex flex-col justify-center mt-14 px-32 gap-3">
-                <a className="text-blue-600 text-center font-bold mt-2" href="/">Voltar</a>
+                <div className="flex gap-20 justify-center">
+                    <a className="text-blue-600 text-center font-bold mt-2" href="/store">Criar conta em loja</a>
+                </div>
                 <input
                     className="bg-slate-600 rounded-md p-4 text-white w-full"
                     type="text"
