@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { useState, useEffect } from 'react'
 
 function Product({ product_id, product_name, description, category, brand, model, price, product_url, average_rating, availability, image_url, store_id }) {
+    const [resp, setResponse] = useState("Adicionar ao carrinho")
     let product = {
         product_id: product_id,
         product_name: product_name,
@@ -23,8 +25,11 @@ function Product({ product_id, product_name, description, category, brand, model
         text = "Havan"
     }
     const handlePostProduct = async (event) => {
+        
         const response = await axios.post('http://127.0.0.1:8000/rpa', product, {headers: {'token': localStorage.getItem('accessToken')}});
-
+        if (response){
+            setResponse(response.data.resp)
+        }
     };
 
     return (
@@ -42,7 +47,7 @@ function Product({ product_id, product_name, description, category, brand, model
                 className="mt-4 bg-slate-800 rounded-md p-4 w-full text-white hover:bg-slate-700 transition"
                 type="button"
                 onClick={handlePostProduct}
-            >Adicionar ao carrinho</button>
+            >{resp}</button>
         </div>
     )
 }

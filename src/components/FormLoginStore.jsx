@@ -7,8 +7,8 @@ function FormLoginStore() {
     const [login, setLogin] = useState({
         username: '',
         password: '',
-        user_id: null,
-        store_id: null,
+        user_id: '',
+        store_id: '1',
     });
 
 
@@ -70,11 +70,11 @@ function FormLoginStore() {
                     <button
                         className="bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition w-full"
                         type="submit"
-                    >Entrar</button>
+                    >Criar</button>
                     <select name='store_id'
                         onChange={handleChange}
                         className='bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition w-full'>
-                        <option disabled value="">Selecione</option>
+                        <option disabled >Selecione</option>
                         {store ? store.map((str, index) => (<option key={index} value={str.store_id}>{str.store_name}</option>)) : null}
                     </select>
                 </div>
