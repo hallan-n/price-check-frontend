@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 
 function FormLoginStore() {
-    const [store, setStore] = useState(null)
-    const [user, setUser] = useState(null)
+    const [store, setStore] = useState()
+    const [user, setUser] = useState()
     const [login, setLogin] = useState({
         username: '',
         password: '',
@@ -16,12 +16,10 @@ function FormLoginStore() {
         const handleGetData = async () => {
             const respStore = await axios.get('http://127.0.0.1:8000/store', { headers: { 'token': localStorage.getItem('accessToken') } });
             const respUser = await axios.get('http://127.0.0.1:8000/user', { headers: { 'token': localStorage.getItem('accessToken') } });
-            const storeData = respStore.data;
-            const userData = respUser.data
-            setStore(storeData)
-            setUser(userData)
+            setStore(respStore.data)
+            setUser(respUser.data)
             setLogin((prevLogin) => ({
-                ...prevLogin,
+                ...prevLogin
             }));
         };
         handleGetData()
@@ -30,11 +28,11 @@ function FormLoginStore() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://127.0.0.1:8000/login', login, {
-                headers: {
-                    'token': localStorage.getItem('accessToken')
-                }
-            });
+                const response = await axios.post('http://127.0.0.1:8000/login', login, {
+                    headers: {
+                        'token': localStorage.getItem('accessToken')
+                    }
+                });
         } catch (error) {
             console.error('Erro:', error.message);
         }
@@ -73,9 +71,11 @@ function FormLoginStore() {
                         className="bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition w-full"
                         type="submit"
                     >Entrar</button>
-                    <select name='store_id' onChange={handleChange} className='bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition w-full'>
-                        <option disabled selected>Selecione</option>
-                        {store ? store.map(str => <option value={str.store_id}>{str.store_name}</option>) : null}
+                    <select name='store_id'
+                        onChange={handleChange}
+                        className='bg-slate-800 rounded-md p-4 text-white hover:bg-slate-700 transition w-full'>
+                        <option disabled value="">Selecione</option>
+                        {store ? store.map((str, index) => (<option key={index} value={str.store_id}>{str.store_name}</option>)) : null}
                     </select>
                 </div>
             </div>
